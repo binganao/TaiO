@@ -34,9 +34,7 @@ func InitDB() *gorm.DB {
 		os.Exit(0)
 	}
 
-	db.AutoMigrate(&db2.MascM{})
-	db.AutoMigrate(&db2.NamM{})
-	db.AutoMigrate(&db2.FingM{})
+	db.AutoMigrate(&db2.ProbM{})
 
 	DB = db
 	return db

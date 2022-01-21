@@ -55,7 +55,6 @@ func FingerScan(ip, services string) []string {
 			return nil
 		}
 		part := strings.Split(out, "|")
-		fmt.Println(len(part))
 		if len(part) > 1 {
 			part1 := strings.Split(part[1], " ")
 			part2 := strings.Split(part[2], " ")
