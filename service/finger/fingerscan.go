@@ -51,13 +51,22 @@ func FingerScan(ip, services string) []string {
 
 	if len(outb.Bytes()) != 0 {
 		out := string(outb.Bytes())
-
+		if !strings.ContainsAny(out, "]") {
+			return nil
+		}
 		part := strings.Split(out, "|")
-		part1 := strings.Split(part[1], " ")
-		part2 := strings.Split(part[2], " ")
-		result = append(result, part1[1])
-		result = append(result, part2[1])
+		if len(part) > 1 {
+			part1 := strings.Split(part[1], " ")
+			part2 := strings.Split(part[2], " ")
+			if part1[1] != "" {
+				result = append(result, part1[1])
+			}
+			if part1[2] != "" {
+				result = append(result, part2[1])
+			}
+		}
+		return result
 	}
 
-	return result
+	return nil
 }

@@ -19,9 +19,12 @@ func Probe(ip string) {
 	fmt.Println(services)
 	for _, s := range services {
 		if s != "" {
-			web = append(web, finger.FingerScan(ip, s))
+			wt := finger.FingerScan(ip, s)
+			if wt != nil {
+				web = append(web, wt)
+			}
 		}
 	}
 	logger.Info("目标 " + ip + " 的指纹识别结果: ")
-	fmt.Println(ip, ports, services, web)
+	fmt.Println(web)
 }
