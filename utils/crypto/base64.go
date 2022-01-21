@@ -2,7 +2,7 @@ package crypto
 
 import (
 	"encoding/base64"
-	"log"
+	"github.com/binganao/Taio/pkg/logger"
 )
 
 func Base64Enctypto(raw string) string {
@@ -14,7 +14,8 @@ func Base64Enctypto(raw string) string {
 func Base64Decrypto(raw string) string {
 	decodeBytes, err := base64.StdEncoding.DecodeString(raw)
 	if err != nil {
-		log.Fatalln(err)
+		logger.Info("输入信息解码失败")
+		return ""
 	}
 	return string(decodeBytes)
 }

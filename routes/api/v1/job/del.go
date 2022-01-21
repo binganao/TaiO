@@ -8,8 +8,8 @@ import (
 	"net/http"
 )
 
-func AddJob(c *gin.Context) {
+func DelJob(c *gin.Context) {
 	hosts := crypto.Base64Decrypto(c.Query("hosts"))
-	jobs.AddJobs(hosts)
-	c.JSON(http.StatusOK, response.JobResp{Code: http.StatusOK, Msg: "操作成功，任务已经添加"})
+	jobs.DelJobs(hosts)
+	c.JSON(http.StatusOK, response.JobResp{Code: http.StatusOK, Msg: "操作成功，任务已经删除"})
 }

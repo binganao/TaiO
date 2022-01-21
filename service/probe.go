@@ -100,6 +100,9 @@ func save(host, ports, services, fingers string) {
 			Services: services,
 			Fingers:  fingers,
 		}
-		lib.GetDB().Model(&db.ProbM{}).Updates(probt)
+		lib.GetDB().Model(&db.ProbM{}).Where("host = ?", host).Update("ports", probt.Ports)
+		lib.GetDB().Model(&db.ProbM{}).Where("host = ?", host).Update("services", probt.Services)
+		lib.GetDB().Model(&db.ProbM{}).Where("host = ?", host).Update("fingers", probt.Fingers)
+		logger.Info("目标 " + host + " 已完成探测!")
 	}
 }

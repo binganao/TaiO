@@ -1,7 +1,6 @@
 package search
 
 import (
-	"fmt"
 	"github.com/binganao/Taio/lib"
 	"github.com/binganao/Taio/model/db"
 	"github.com/binganao/Taio/model/response"
@@ -24,30 +23,33 @@ func queryHost(host string) response.Search {
 	if len(qd) > 0 {
 		s.Code = http.StatusOK
 		s.Msg = "操作成功"
-		fmt.Println(qd[0])
 		s.Hosts = qd[0].Host
 		ports := strings.Split(qd[0].Ports, ",")
 		s.Ports = ports
 		var ser []response.Service
 		se := strings.Split(qd[0].Services, ",")
 		for _, ss := range se {
-			part := strings.Split(ss, ":")
-			sv := response.Service{}
-			sv.Port = part[0]
-			sv.ServiceName = part[1]
-			ser = append(ser, sv)
+			if strings.Contains(ss, ":") {
+				part := strings.Split(ss, ":")
+				sv := response.Service{}
+				sv.Port = part[0]
+				sv.ServiceName = part[1]
+				ser = append(ser, sv)
+			}
 		}
 		s.Services = ser
 
 		var ftss []response.Finger
 		fts := strings.Split(qd[0].Fingers, ";")
 		for _, ft := range fts {
-			part := strings.Split(ft, ",")
-			f := response.Finger{}
-			f.Url = part[0]
-			f.App = part[1]
-			f.Server = part[2]
-			ftss = append(ftss, f)
+			if strings.Contains(ft, ",") {
+				part := strings.Split(ft, ",")
+				f := response.Finger{}
+				f.Url = part[0]
+				f.App = part[1]
+				f.Server = part[2]
+				ftss = append(ftss, f)
+			}
 		}
 		s.Fingers = ftss
 
