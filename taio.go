@@ -1,10 +1,8 @@
 package main
 
 import (
-	"fmt"
 	"github.com/binganao/Taio/common"
 	"github.com/binganao/Taio/lib"
-	"github.com/binganao/Taio/service/scan"
 )
 
 func main() {
@@ -21,6 +19,4 @@ func main() {
 	//}
 	//
 	//r.Run()
-
-	fmt.Println(scan.MasScan(""))
 }

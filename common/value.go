@@ -21,6 +21,12 @@ var (
 	DATABASE_PASSWORD string // 数据库密码
 	DATABASE_DATABASE string // 数据库名称
 	DATABASE_CHARSET  string // 数据库 字符集
+
+	/**
+	MASSCAN
+	*/
+	CONFIG_MASSCAN_RATE = "masscan.rate"
+	MASSCAN_RATE        int
 )
 
 func InitValue() {
@@ -31,4 +37,6 @@ func InitValue() {
 	DATABASE_PASSWORD = viper.GetString(CONFIG_DATABASE_PASSWORD)
 	DATABASE_DATABASE = viper.GetString(CONFIG_DATABASE_DATABASE)
 	DATABASE_CHARSET = viper.GetString(CONFIG_DATABASE_CHARSET)
+
+	MASSCAN_RATE = viper.GetInt(CONFIG_MASSCAN_RATE)
 }

@@ -1,6 +1,7 @@
-package scan
+package mas
 
 import (
+	"github.com/binganao/Taio/common"
 	"github.com/zan8in/masscan"
 	"strconv"
 )
@@ -12,7 +13,7 @@ func MasScan(ip string) []string {
 		masscan.SetParamPorts("1-65535"),
 		masscan.EnableDebug(),
 		masscan.SetParamWait(0),
-		masscan.SetParamRate(1000),
+		masscan.SetParamRate(common.MASSCAN_RATE),
 	)
 	if err != nil {
 		return nil

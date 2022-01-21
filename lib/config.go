@@ -21,6 +21,9 @@ func InitConfig() {
 	viper.SetDefault(common.CONFIG_DATABASE_DATABASE, "taiO")
 	viper.SetDefault(common.CONFIG_DATABASE_CHARSET, "utf8mb4")
 
+	// masscan
+	viper.SetDefault(common.CONFIG_MASSCAN_RATE, 100)
+
 	err := viper.ReadInConfig()
 	if err != nil {
 		logger.Error("Read config failed!")
