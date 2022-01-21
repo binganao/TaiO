@@ -2,10 +2,16 @@ package main
 
 import (
 	"fmt"
+	"github.com/binganao/Taio/common"
+	"github.com/binganao/Taio/lib"
 	"github.com/binganao/Taio/service/scan"
 )
 
 func main() {
+	lib.InitConfig()
+	common.InitValue()
+	lib.InitDB()
+
 	//r := gin.Default()
 	//
 	//v1 := r.Group("api/v1")

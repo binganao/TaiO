@@ -5,5 +5,5 @@ import "github.com/jinzhu/gorm"
 type MascM struct {
 	gorm.Model
 	Host  string
-	Ports []string
+	Ports string
 }

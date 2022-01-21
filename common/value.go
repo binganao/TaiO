@@ -1,5 +1,7 @@
 package common
 
+import "github.com/spf13/viper"
+
 var (
 	/**
 	数据库配置文件节点
@@ -22,5 +24,11 @@ var (
 )
 
 func InitValue() {
-
+	DATABASE_DRIVER = viper.GetString(CONFIG_DATABASE_DRIVER)
+	DATABASE_HOST = viper.GetString(CONFIG_DATABASE_HOST)
+	DATABASE_PORT = viper.GetString(CONFIG_DATABASE_PORT)
+	DATABASE_USERNAME = viper.GetString(CONFIG_DATABASE_USERNAME)
+	DATABASE_PASSWORD = viper.GetString(CONFIG_DATABASE_PASSWORD)
+	DATABASE_DATABASE = viper.GetString(CONFIG_DATABASE_DATABASE)
+	DATABASE_CHARSET = viper.GetString(CONFIG_DATABASE_CHARSET)
 }
