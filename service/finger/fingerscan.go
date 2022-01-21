@@ -25,7 +25,7 @@ func FingerScan(ip, services string) []string {
 			result = append(result, "https://"+ip+":"+part[0])
 		} else if part[1] == "http" {
 			args = append(args, "http://"+ip+":"+part[0])
-			result = append(result, "https://"+ip+":"+part[0])
+			result = append(result, "http://"+ip+":"+part[0])
 		} else {
 			return nil
 		}
@@ -55,15 +55,12 @@ func FingerScan(ip, services string) []string {
 			return nil
 		}
 		part := strings.Split(out, "|")
+		fmt.Println(len(part))
 		if len(part) > 1 {
 			part1 := strings.Split(part[1], " ")
 			part2 := strings.Split(part[2], " ")
-			if part1[1] != "" {
-				result = append(result, part1[1])
-			}
-			if part1[2] != "" {
-				result = append(result, part2[1])
-			}
+			result = append(result, part1[1])
+			result = append(result, part2[1])
 		}
 		return result
 	}
