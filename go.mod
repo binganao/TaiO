@@ -2,7 +2,10 @@ module github.com/binganao/Taio
 
 go 1.17
 
-require github.com/gin-gonic/gin v1.7.7
+require (
+	github.com/gin-gonic/gin v1.7.7
+	github.com/zan8in/masscan v0.0.0-20220120033623-ac75bd1222a8
+)
 
 require (
 	github.com/gin-contrib/sse v0.1.0 // indirect

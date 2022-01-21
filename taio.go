@@ -1,19 +1,20 @@
 package main
 
 import (
-	"github.com/binganao/Taio/routes/api/v1/job"
-	"github.com/binganao/Taio/routes/api/v1/test"
-	"github.com/gin-gonic/gin"
+	"fmt"
+	"github.com/binganao/Taio/service/scan"
 )
 
 func main() {
-	r := gin.Default()
+	//r := gin.Default()
+	//
+	//v1 := r.Group("api/v1")
+	//{
+	//	v1.GET("test", test.Test)
+	//	v1.GET("job", job.AddJob)
+	//}
+	//
+	//r.Run()
 
-	v1 := r.Group("api/v1")
-	{
-		v1.GET("test", test.Test)
-		v1.GET("job", job.AddJob)
-	}
-
-	r.Run()
+	fmt.Println(scan.MasScan(""))
 }
