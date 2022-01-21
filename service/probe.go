@@ -73,6 +73,9 @@ func Probe(ip string) {
 		}
 	}
 	logger.Info("目标 " + ip + " 的指纹识别结果: ")
+	fmt.Println(dW)
+
+	save(ip, dP, dS, dW)
 }
 
 func save(host, ports, services, fingers string) {
@@ -91,6 +94,12 @@ func save(host, ports, services, fingers string) {
 			logger.Error("目标 " + host + " 已完成探测，但写入数据失败!")
 		}
 	} else {
-
+		probt := db.ProbM{
+			Host:     host,
+			Ports:    ports,
+			Services: services,
+			Fingers:  fingers,
+		}
+		lib.GetDB().Model(&db.ProbM{}).Updates(probt)
 	}
 }
