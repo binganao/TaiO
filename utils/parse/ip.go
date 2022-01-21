@@ -1,22 +1,30 @@
-package utils
+package parse
 
 import (
 	"fmt"
+	"net"
 	"sort"
 	"strconv"
 	"strings"
 )
 
+/*
+TODO 去除冗余代码，改为函数
+*/
+
 func ParseIP(rawInput string) []string {
 	var ips []string
 	var parts [4][]string
+
+	rawInput = strings.ReplaceAll(rawInput, "*", "0-255")
 
 	// 判断是否为 IP 段的形式
 	if strings.Contains(rawInput, ";") {
 		multiIp := strings.Split(rawInput, ";")
 		for _, raw := range multiIp {
 			if strings.Contains(raw, "/") {
-
+				tip, _ := dealCIDR(raw)
+				ips = append(ips, tip...)
 			} else {
 				ipSlice := strings.Split(raw, ".")
 
@@ -74,7 +82,8 @@ func ParseIP(rawInput string) []string {
 		}
 	} else {
 		if strings.Contains(rawInput, "/") {
-
+			tip, _ := dealCIDR(rawInput)
+			ips = append(ips, tip...)
 		} else {
 			ipSlice := strings.Split(rawInput, ".")
 
@@ -167,7 +176,7 @@ func sliceContains(sub string, list []string) bool {
 
 //slice去重
 func removeRepByMap(slc []string) []string {
-	result := []string{}
+	var result []string
 	tempMap := map[string]byte{}
 	for _, e := range slc {
 		l := len(tempMap)
@@ -178,4 +187,27 @@ func removeRepByMap(slc []string) []string {
 		}
 	}
 	return result
+}
+
+// 处理 CIDR
+func dealCIDR(cidr string) ([]string, error) {
+	ip, ipNet, err := net.ParseCIDR(cidr)
+	if err != nil {
+		return nil, err
+	}
+	var ips []string
+	//在循环里创建的所有函数变量共享相同的变量。
+	for ip := ip.Mask(ipNet.Mask); ipNet.Contains(ip); ipTools(ip) {
+		ips = append(ips, ip.String())
+	}
+	return ips[1 : len(ips)-1], nil
+}
+
+func ipTools(ip net.IP) {
+	for j := len(ip) - 1; j >= 0; j-- {
+		ip[j]++
+		if ip[j] > 0 {
+			break
+		}
+	}
 }
