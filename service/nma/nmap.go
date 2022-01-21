@@ -3,12 +3,21 @@ package nma
 import (
 	"context"
 	"github.com/binganao/Taio/pkg/logger"
+	"strconv"
 	"time"
 
 	"github.com/Ullaakut/nmap/v2"
 )
 
-func nmapScan(ip string, ports string) []string {
+func NmapScan(ip string, portSlice []string) []string {
+	var ports string
+	for i, p := range portSlice {
+		if i == 0 {
+			ports += p
+		} else {
+			ports += "," + p
+		}
+	}
 	var results []string
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Minute)
 	defer cancel()
@@ -17,6 +26,7 @@ func nmapScan(ip string, ports string) []string {
 		nmap.WithTargets(ip),
 		nmap.WithPorts(ports),
 		nmap.WithContext(ctx),
+		nmap.WithServiceInfo(),
 	)
 	if err != nil {
 		logger.Error("unable to create nma scanner:")
@@ -39,7 +49,7 @@ func nmapScan(ip string, ports string) []string {
 		}
 
 		for _, port := range host.Ports {
-			results = append(results, port.Service.Name)
+			results = append(results, strconv.Itoa(int(port.ID))+":"+port.Service.Name)
 		}
 	}
 

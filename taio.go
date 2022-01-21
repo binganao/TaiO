@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/binganao/Taio/common"
 	"github.com/binganao/Taio/lib"
+	"github.com/binganao/Taio/service"
 )
 
 func main() {
@@ -19,4 +20,5 @@ func main() {
 	//}
 	//
 	//r.Run()
+	service.Probe("")
 }
