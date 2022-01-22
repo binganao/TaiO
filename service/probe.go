@@ -2,12 +2,11 @@ package service
 
 import (
 	"fmt"
-	"github.com/binganao/Taio/lib"
-	"github.com/binganao/Taio/model/db"
 	"github.com/binganao/Taio/pkg/logger"
 	"github.com/binganao/Taio/service/finger"
 	"github.com/binganao/Taio/service/mas"
 	"github.com/binganao/Taio/service/nma"
+	"github.com/binganao/Taio/service/save"
 )
 
 func Probe(ip string) {
@@ -75,34 +74,5 @@ func Probe(ip string) {
 	logger.Info("目标 " + ip + " 的指纹识别结果: ")
 	fmt.Println(dW)
 
-	save(ip, dP, dS, dW)
-}
-
-func save(host, ports, services, fingers string) {
-	var probT []db.ProbM
-	lib.GetDB().Where("host = ?", host).Find(&probT)
-	if len(probT) == 0 {
-		probt := db.ProbM{
-			Host:     host,
-			Ports:    ports,
-			Services: services,
-			Fingers:  fingers,
-		}
-		if err := lib.GetDB().Create(&probt).Error; err == nil {
-			logger.Info("目标 " + host + " 已完成探测!")
-		} else {
-			logger.Error("目标 " + host + " 已完成探测，但写入数据失败!")
-		}
-	} else {
-		probt := db.ProbM{
-			Host:     host,
-			Ports:    ports,
-			Services: services,
-			Fingers:  fingers,
-		}
-		lib.GetDB().Model(&db.ProbM{}).Where("host = ?", host).Update("ports", probt.Ports)
-		lib.GetDB().Model(&db.ProbM{}).Where("host = ?", host).Update("services", probt.Services)
-		lib.GetDB().Model(&db.ProbM{}).Where("host = ?", host).Update("fingers", probt.Fingers)
-		logger.Info("目标 " + host + " 已完成探测!")
-	}
+	save.Save(ip, dP, dS, dW)
 }

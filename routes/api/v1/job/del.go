@@ -11,5 +11,5 @@ import (
 func DelJob(c *gin.Context) {
 	hosts := crypto.Base64Decrypto(c.Query("hosts"))
 	jobs.DelJobs(hosts)
-	c.JSON(http.StatusOK, response.JobResp{Code: http.StatusOK, Msg: "操作成功，任务已经删除"})
+	c.JSON(http.StatusOK, response.JobResp{Code: http.StatusOK, Msg: "指令已下达，任务即将删除"})
 }
