@@ -29,7 +29,7 @@ Day2: 增加添加数据路由、Banner、解决删除 jobs 有时侯删除失�
 
 ### 特点
 
-增加更多信息：IP 定位、运营商
+增加更多信息：IP 定位、运营商、Header、Body、哈希
 
 增加危险服务标记：RDP、MYSQL、MSSQL、REDIS、SSH
 
