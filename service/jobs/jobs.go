@@ -36,6 +36,9 @@ func AddJobs(raw string, f bool) {
 
 func DelJobs(raw string) {
 	go func() {
+		if len(jobs) == 0 {
+			return
+		}
 		for i := range jobs {
 			if i == raw {
 				logger.Success("任务 " + raw + " 删除成功，当前任务队列共计: " + strconv.Itoa(len(jobs)) + " 条!")
@@ -45,5 +48,21 @@ func DelJobs(raw string) {
 				continue
 			}
 		}
+	}()
+}
+
+func StopJobs() {
+	go func() {
+		l := len(jobs)
+		for l > 0 {
+			<-jobs
+		}
+		<-jobs
+		t := ""
+		for len(jobs) == 0 {
+			jobs <- t
+		}
+		t = <-jobs
+		logger.Success("任务队列成功，当前任务队列共计: " + strconv.Itoa(len(jobs)) + " 条!")
 	}()
 }

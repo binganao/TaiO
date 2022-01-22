@@ -16,6 +16,7 @@ func V1(r *gin.Engine) {
 		{
 			jobR.GET("add", job.AddJob)
 			jobR.GET("del", job.DelJob)
+			jobR.GET("stop", job.StopJob)
 		}
 
 		dataR := v1.Group("data")

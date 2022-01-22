@@ -31,6 +31,12 @@ Day2: 增加添加数据路由、Banner
 
 增加危险服务标记：RDP、MYSQL、MSSQL、REDIS、SSH
 
+### 等待修复的 BUG
+
+异步 Nmap 扫描，实时出结果
+
+解决删除 jobs 有时侯删除失败 doing
+
 ## 感谢
 
 [https://github.com/EdgeSecurityTeam/EHole](https://github.com/EdgeSecurityTeam/EHole)
