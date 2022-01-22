@@ -18,6 +18,7 @@ func main() {
 	jobs.InitJobs()
 	go service.AyncProbe()
 
+	gin.SetMode(gin.ReleaseMode)
 	r := gin.Default()
 
 	routes.V1(r)
