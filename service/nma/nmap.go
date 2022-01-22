@@ -10,6 +10,8 @@ import (
 )
 
 func NmapScan(ip string, portSlice []string) []string {
+	logger.Info("开始对目标 " + ip + " 进行服务探测")
+
 	var ports string
 	for i, p := range portSlice {
 		if i == 0 {
@@ -29,13 +31,13 @@ func NmapScan(ip string, portSlice []string) []string {
 		nmap.WithServiceInfo(),
 	)
 	if err != nil {
-		logger.Error("unable to create nma scanner:")
+		logger.Error("Unable to create nma scanner:")
 		return nil
 	}
 
 	result, warnings, err := scanner.Run()
 	if err != nil {
-		logger.Error("unable to run nma scan")
+		logger.Error("Unable to run nma scan")
 		return nil
 	}
 
@@ -43,12 +45,15 @@ func NmapScan(ip string, portSlice []string) []string {
 		logger.Info("Nmap Warnings")
 	}
 
+	logger.Info("目标 " + ip + " 开启了以下服务: ")
+
 	for _, host := range result.Hosts {
 		if len(host.Ports) == 0 || len(host.Addresses) == 0 {
 			continue
 		}
 
 		for _, port := range host.Ports {
+			logger.Info(ip + " " + strconv.Itoa(int(port.ID)) + " " + port.Service.Name)
 			results = append(results, strconv.Itoa(int(port.ID))+":"+port.Service.Name)
 		}
 	}

@@ -21,6 +21,9 @@ func GetJobs(f bool) chan string {
 }
 
 func AddJobs(raw string, f bool) {
+	if raw == "" {
+		return
+	}
 	jobs <- raw
 	if f {
 		if Lock {
@@ -33,9 +36,6 @@ func AddJobs(raw string, f bool) {
 
 func DelJobs(raw string) {
 	go func() {
-		if len(jobs) == 0 {
-			return
-		}
 		for i := range jobs {
 			if i == raw {
 				logger.Success("任务 " + raw + " 删除成功，当前任务队列共计: " + strconv.Itoa(len(jobs)) + " 条!")

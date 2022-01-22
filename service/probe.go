@@ -1,7 +1,6 @@
 package service
 
 import (
-	"fmt"
 	"github.com/binganao/Taio/pkg/logger"
 	"github.com/binganao/Taio/service/finger"
 	"github.com/binganao/Taio/service/mas"
@@ -12,9 +11,7 @@ import (
 func Probe(ip string) {
 	var web [][]string
 
-	logger.Info("开始对目标 " + ip + " 进行端口探测")
 	ports := mas.MasScan(ip)
-	logger.Info("目标 " + ip + " 开启了以下端口: ")
 
 	var dP string
 	for i, p := range ports {
@@ -24,11 +21,8 @@ func Probe(ip string) {
 			dP += "," + p
 		}
 	}
-	fmt.Println(dP)
 
-	logger.Info("开始对目标 " + ip + " 进行服务探测")
 	services := nma.NmapScan(ip, ports)
-	logger.Info("目标 " + ip + " 开启了以下服务: ")
 
 	var dS string
 	for i, p := range services {
@@ -38,9 +32,9 @@ func Probe(ip string) {
 			dS += "," + p
 		}
 	}
-	fmt.Println(dS)
 
-	logger.Info("开始对目标 " + ip + " 进行指纹探测")
+	logger.Info("开始对目标 " + ip + " 进行 WEB 指纹探测")
+
 	for _, s := range services {
 		if s != "" {
 			wt := finger.FingerScan(ip, s)
@@ -71,8 +65,6 @@ func Probe(ip string) {
 			}
 		}
 	}
-	logger.Info("目标 " + ip + " 的指纹识别结果: ")
-	fmt.Println(dW)
 
 	save.Save(ip, dP, dS, dW)
 }

@@ -3,12 +3,14 @@ package finger
 import (
 	"bytes"
 	"fmt"
+	"github.com/binganao/Taio/pkg/logger"
 	"os/exec"
 	"runtime"
 	"strings"
 )
 
 func FingerScan(ip, services string) []string {
+
 	var cmd *exec.Cmd
 	var outb, errs bytes.Buffer
 
@@ -68,8 +70,10 @@ func FingerScan(ip, services string) []string {
 		}
 		part := strings.Split(out, "|")
 		if len(part) > 1 {
+			part0 := strings.Split(part[0], " ")
 			part1 := strings.Split(part[1], " ")
 			part2 := strings.Split(part[2], " ")
+			logger.Info(part0[1] + " " + part1[1] + " " + part2[1])
 			result = append(result, part1[1])
 			result = append(result, part2[1])
 		}
