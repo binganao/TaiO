@@ -10,6 +10,6 @@ import (
 
 func AddJob(c *gin.Context) {
 	hosts := crypto.Base64Decrypto(c.Query("hosts"))
-	jobs.AddJobs(hosts)
+	jobs.AddJobs(hosts, true)
 	c.JSON(http.StatusOK, response.JobResp{Code: http.StatusOK, Msg: "操作成功，任务已经添加"})
 }
