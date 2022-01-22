@@ -10,6 +10,7 @@ import (
 )
 
 func main() {
+	lib.Banner()
 	lib.InitConfig()
 	common.InitValue()
 	lib.InitDB()
