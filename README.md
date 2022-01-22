@@ -1,5 +1,5 @@
-# Taio
-Taio 网络空间测绘
+# TaiO
+TaiO 站在攻击方角度，对靶标进行网络测绘
 
 ## DONE:
 
