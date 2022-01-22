@@ -6,6 +6,7 @@ import (
 )
 
 var jobs chan string
+var Lock = false
 
 func InitJobs() {
 	jobs = make(chan string, 10000)
@@ -20,10 +21,14 @@ func GetJobs(f bool) chan string {
 }
 
 func AddJobs(raw string, f bool) {
-	if f {
-		logger.Success("新任务 " + raw + " 添加成功，当前任务队列共计: " + strconv.Itoa(len(jobs)+1) + " 条!")
-	}
 	jobs <- raw
+	if f {
+		if Lock {
+			logger.Success("新任务 " + raw + " 添加成功，当前任务队列共计: " + strconv.Itoa(len(jobs)+1) + " 条!")
+		} else {
+			logger.Success("新任务 " + raw + " 添加成功，当前任务队列共计: " + strconv.Itoa(len(jobs)) + " 条!")
+		}
+	}
 }
 
 func DelJobs(raw string) {
@@ -41,9 +46,4 @@ func DelJobs(raw string) {
 			}
 		}
 	}()
-}
-
-func nothing(i string) {
-	i = ""
-	return
 }

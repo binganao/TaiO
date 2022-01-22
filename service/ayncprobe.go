@@ -16,12 +16,14 @@ func AyncProbe() {
 			continue
 		}
 		for raws := range jobs.GetJobs(true) {
+			jobs.Lock = true
 			logger.Info("检测到任务: " + raws + ", 开始扫描...")
 			hosts := parse.ParseIP(raws)
 			for i, host := range hosts {
 				logger.Info("启动探测 " + host + ", 当前任务进度: " + strconv.Itoa(i+1) + "/" + strconv.Itoa(len(hosts)))
 				Probe(host)
 			}
+			jobs.Lock = false
 			jobs.AddJobs(raws, false)
 		}
 	}
