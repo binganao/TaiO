@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"fmt"
 	"os/exec"
+	"runtime"
 	"strings"
 )
 
@@ -33,7 +34,18 @@ func FingerScan(ip, services string) []string {
 		return nil
 	}
 
-	cmd = exec.Command("bin/ehole", args...)
+	ehole := ""
+
+	switch runtime.GOOS {
+	case "windows":
+		ehole = "bin/win/ehole.exe"
+	case "linux":
+		ehole = "bin/lin/ehole"
+	case "darwin":
+		ehole = "bin/darwin/ehole"
+	}
+
+	cmd = exec.Command(ehole, args...)
 
 	cmd.Stdout = &outb
 	cmd.Stderr = &errs
