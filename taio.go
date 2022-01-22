@@ -7,6 +7,7 @@ import (
 	"github.com/binganao/Taio/service"
 	"github.com/binganao/Taio/service/jobs"
 	"github.com/gin-gonic/gin"
+	"io/ioutil"
 )
 
 func main() {
@@ -19,6 +20,7 @@ func main() {
 	go service.AyncProbe()
 
 	gin.SetMode(gin.ReleaseMode)
+	gin.DefaultWriter = ioutil.Discard
 	r := gin.Default()
 
 	routes.V1(r)
