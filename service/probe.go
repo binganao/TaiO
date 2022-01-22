@@ -1,7 +1,6 @@
 package service
 
 import (
-	"fmt"
 	"github.com/binganao/Taio/pkg/logger"
 	"github.com/binganao/Taio/service/finger"
 	"github.com/binganao/Taio/service/mas"
@@ -24,8 +23,6 @@ func Probe(ip string) {
 	}
 
 	services := nma.NmapScan(ip, ports)
-
-	fmt.Println(services)
 
 	var dS string
 	for i, p := range services {

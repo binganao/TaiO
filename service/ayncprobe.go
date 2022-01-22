@@ -16,7 +16,18 @@ func AyncProbe() {
 			continue
 		}
 		for raws := range jobs.GetJobs(true) {
+			if raws == "" {
+				continue
+			}
 			jobs.Lock = true
+			if jobs.DWorking == raws {
+				logger.Success("任务 " + raws + " 的删除操作已完成!")
+				jobs.Working = ""
+				jobs.DWorking = ""
+				jobs.DelJobs(raws)
+				continue
+			}
+			jobs.Working = raws
 			logger.Info("检测到任务: " + raws + ", 开始扫描...")
 			hosts := parse.ParseIP(raws)
 			if len(hosts) == 0 {
@@ -27,6 +38,7 @@ func AyncProbe() {
 				logger.Info("启动探测 " + host + ", 当前任务进度: " + strconv.Itoa(i+1) + "/" + strconv.Itoa(len(hosts)))
 				Probe(host)
 			}
+			jobs.Working = ""
 			jobs.Lock = false
 			jobs.AddJobs(raws, false)
 		}

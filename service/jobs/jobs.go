@@ -6,6 +6,8 @@ import (
 )
 
 var jobs chan string
+var Working string
+var DWorking string
 var Lock = false
 
 func InitJobs() {
@@ -37,6 +39,10 @@ func AddJobs(raw string, f bool) {
 func DelJobs(raw string) {
 	go func() {
 		if len(jobs) == 0 {
+			if raw == Working {
+				DWorking = raw
+				logger.Info("任务 " + raw + " 正在运行，操作将在本次任务结束后生效!")
+			}
 			return
 		}
 		for i := range jobs {
