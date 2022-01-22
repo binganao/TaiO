@@ -11,7 +11,6 @@ func MasScan(ip string) []string {
 	scanner, err := masscan.NewScanner(
 		masscan.SetParamTargets(ip),
 		masscan.SetParamPorts("1-65535"),
-		masscan.EnableDebug(),
 		masscan.SetParamWait(0),
 		masscan.SetParamRate(common.MASSCAN_RATE),
 	)
