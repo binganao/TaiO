@@ -10,6 +10,10 @@ import (
 
 func aynscNmap(aHost, port string) string {
 
+	if port == "" {
+		return ""
+	}
+
 	var aResult string
 
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Minute)
@@ -20,6 +24,7 @@ func aynscNmap(aHost, port string) string {
 		nmap.WithPorts(port),
 		nmap.WithContext(ctx),
 		nmap.WithServiceInfo(),
+		nmap.WithSkipHostDiscovery(),
 	)
 	if err != nil {
 		logger.Error("Unable to create nma scanner:")

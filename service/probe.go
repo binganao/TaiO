@@ -22,6 +22,7 @@ func Probe(ip string) {
 		}
 	}
 
+	logger.Info("开始对目标 " + ip + " 进行服务识别")
 	services := nma.NmapScan(ip, ports)
 
 	var dS string
