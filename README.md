@@ -1,5 +1,5 @@
 # TaiO
-TaiO 的定位是一款用于攻击方对靶标资产梳理，快速定位脆弱资产的工具
+TaiO的定位是用于攻击方对靶的资产，快速轻松地使用标的资产网络空间安全测绘工具。
 
 ![](https://github.com/binganao/TaiO/blob/master/assets/Process.png?raw=true)
 
