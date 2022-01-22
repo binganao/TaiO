@@ -27,6 +27,12 @@ var (
 	*/
 	CONFIG_MASSCAN_RATE = "masscan.rate"
 	MASSCAN_RATE        int
+
+	/**
+	ADD SECRET
+	*/
+	CONFIG_ADD_SECRET = "DATA.SECRET"
+	ADD_SECRET        string
 )
 
 func InitValue() {
@@ -39,4 +45,6 @@ func InitValue() {
 	DATABASE_CHARSET = viper.GetString(CONFIG_DATABASE_CHARSET)
 
 	MASSCAN_RATE = viper.GetInt(CONFIG_MASSCAN_RATE)
+
+	ADD_SECRET = viper.GetString(CONFIG_ADD_SECRET)
 }
