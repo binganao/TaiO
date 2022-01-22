@@ -1,5 +1,11 @@
 # TaiO
-TaiO的定位是用于攻击方对靶的资产，快速轻松地使用标的资产网络空间安全测绘工具。
+TaiO 的定位是一款用于攻击方对靶标资产梳理，快速定位脆弱资产的网络空间测绘安全工具
+
+![](https://github.com/binganao/TaiO/blob/master/assets/Process.png?raw=true)
+
+## 注意
+
+在使用本项目之前，请确保已经得到授权。同时**本项目功能还未完善**，同时仅包含后端功能
 
 ![](https://github.com/binganao/TaiO/blob/master/assets/Process.png?raw=true)
 
@@ -46,3 +52,4 @@ Day2: 增加添加数据路由、Banner、解决删除 jobs 有时侯删除失�
 [https://github.com/Ullaakut/nmap](https://github.com/Ullaakut/nmap)
 
 [https://github.com/zan8in/masscan](https://github.com/zan8in/masscan)
+
