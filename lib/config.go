@@ -29,7 +29,7 @@ func InitConfig() {
 
 	err := viper.ReadInConfig()
 	if err != nil {
-		logger.Error("Read config failed!")
+		logger.Error("读取配置文件失败，若为第一次使用，请重启 TaiO")
 	}
 
 	err = viper.WriteConfigAs("config.toml")
@@ -39,7 +39,7 @@ func InitConfig() {
 
 	viper.WatchConfig()
 	viper.OnConfigChange(func(e fsnotify.Event) {
-		logger.Info("Config file changed!")
+		logger.Info("配置文件已更新！")
 		common.InitValue()
 	})
 }
