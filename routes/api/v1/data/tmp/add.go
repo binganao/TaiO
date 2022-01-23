@@ -14,31 +14,31 @@ func AddDataTmp(c *gin.Context) {
 	services, _ := c.GetPostForm("services")
 	fingers, _ := c.GetPostForm("fingers")
 
-	dehost := crypto.Base64Decrypto(host)
-	deports := crypto.Base64Decrypto(ports)
-	deservices := crypto.Base64Decrypto(services)
-	defingers := crypto.Base64Decrypto(fingers)
+	deHost := crypto.Base64Decrypto(host)
+	dePorts := crypto.Base64Decrypto(ports)
+	deServices := crypto.Base64Decrypto(services)
+	deFingers := crypto.Base64Decrypto(fingers)
 
-	if dehost != "" && deports != "" {
-		save.TmpSave(dehost, deports, deservices, defingers)
+	if deHost != "" && dePorts != "" {
+		save.TmpSave(deHost, dePorts, deServices, deFingers)
 
 		c.JSON(http.StatusOK, response.Data{
 			Code: http.StatusOK,
 			Msg:  "数据添加成功",
-			Result: response.ProbM{Host: dehost,
-				Ports:    deports,
-				Services: deservices,
-				Fingers:  defingers,
+			Result: response.ProbM{Host: deHost,
+				Ports:    dePorts,
+				Services: deServices,
+				Fingers:  deFingers,
 			},
 		})
 	} else {
 		c.JSON(http.StatusBadRequest, response.Data{
 			Code: http.StatusBadRequest,
 			Msg:  "数据添加失败",
-			Result: response.ProbM{Host: dehost,
-				Ports:    deports,
-				Services: deservices,
-				Fingers:  defingers,
+			Result: response.ProbM{Host: deHost,
+				Ports:    dePorts,
+				Services: deServices,
+				Fingers:  deFingers,
 			},
 		})
 	}
