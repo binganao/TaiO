@@ -1,4 +1,4 @@
-package datatmp
+package tmp
 
 import (
 	"github.com/binganao/Taio/model/response"

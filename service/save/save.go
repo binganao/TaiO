@@ -35,7 +35,9 @@ func Save(host, ports, services, fingers string, start time.Time) {
 		lib.GetDB().Model(&db.ProbM{}).Where("host = ?", host).Update("ports", probt.Ports)
 		lib.GetDB().Model(&db.ProbM{}).Where("host = ?", host).Update("services", probt.Services)
 		lib.GetDB().Model(&db.ProbM{}).Where("host = ?", host).Update("fingers", probt.Fingers)
-		logger.Success("目标 " + host + " 已完成探测!")
+		elapsed := time.Since(start).Minutes()
+		pE := strconv.FormatFloat(elapsed, 'E', -1, 64)
+		logger.Success("目标 " + host + " 已完成探测，用时: " + pE)
 	}
 }
 
