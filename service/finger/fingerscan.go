@@ -18,15 +18,14 @@ func FingerScan(ip, services string) []string {
 
 	var args []string
 
-	args = append(args, "finger")
 	args = append(args, "-u")
 
 	if strings.ContainsAny(services, ":") {
 		part := strings.Split(services, ":")
-		if part[1] == "https" {
+		if strings.ContainsAny(part[1], "https") {
 			args = append(args, "https://"+ip+":"+part[0])
 			result = append(result, "https://"+ip+":"+part[0])
-		} else if part[1] == "http" {
+		} else if strings.ContainsAny(part[1], "http") {
 			args = append(args, "http://"+ip+":"+part[0])
 			result = append(result, "http://"+ip+":"+part[0])
 		} else {
