@@ -24,11 +24,11 @@ func FingerScan(ip, services string) []string {
 
 	if strings.ContainsAny(services, ":") {
 		part := strings.Split(services, ":")
-		if strings.ContainsAny(part[1], "https") {
+		if strings.Contains(part[1], "https") {
 			args = append(args, "https://"+ip+":"+part[0])
 			url = "https://" + ip + ":" + part[0]
 			result = append(result, "https://"+ip+":"+part[0])
-		} else if strings.ContainsAny(part[1], "http") {
+		} else if strings.Contains(part[1], "http") {
 			args = append(args, "http://"+ip+":"+part[0])
 			url = "http://" + ip + ":" + part[0]
 			result = append(result, "http://"+ip+":"+part[0])
