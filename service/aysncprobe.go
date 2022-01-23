@@ -37,6 +37,7 @@ func AyncProbe() {
 			for i, host := range hosts {
 				logger.Info("启动探测 " + host + ", 当前任务进度: " + strconv.Itoa(i+1) + "/" + strconv.Itoa(len(hosts)))
 				Probe(host)
+				time.Sleep(5 * time.Second)
 			}
 			jobs.Working = ""
 			jobs.Lock = false
