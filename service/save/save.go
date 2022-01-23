@@ -4,9 +4,11 @@ import (
 	"github.com/binganao/Taio/lib"
 	"github.com/binganao/Taio/model/db"
 	"github.com/binganao/Taio/pkg/logger"
+	"strconv"
+	"time"
 )
 
-func Save(host, ports, services, fingers string) {
+func Save(host, ports, services, fingers string, start time.Time) {
 	var probT []db.ProbM
 	lib.GetDB().Where("host = ?", host).Find(&probT)
 	if len(probT) == 0 {
@@ -17,7 +19,9 @@ func Save(host, ports, services, fingers string) {
 			Fingers:  fingers,
 		}
 		if err := lib.GetDB().Create(&probt).Error; err == nil {
-			logger.Success("目标 " + host + " 已完成探测!")
+			elapsed := time.Since(start).Minutes()
+			pE := strconv.FormatFloat(elapsed, 'E', -1, 64)
+			logger.Success("目标 " + host + " 已完成探测，用时: " + pE)
 		} else {
 			logger.Error("目标 " + host + " 已完成探测，但写入数据失败!")
 		}
