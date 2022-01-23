@@ -19,15 +19,28 @@ func AddDataTmp(c *gin.Context) {
 	deservices := crypto.Base64Decrypto(services)
 	defingers := crypto.Base64Decrypto(fingers)
 
-	save.TmpSave(dehost, deports, deservices, defingers)
+	if dehost != "" && deports != "" {
+		save.TmpSave(dehost, deports, deservices, defingers)
 
-	c.JSON(http.StatusOK, response.Data{
-		Code: http.StatusOK,
-		Msg:  "数据添加成功",
-		Result: response.ProbM{Host: dehost,
-			Ports:    deports,
-			Services: deservices,
-			Fingers:  defingers,
-		},
-	})
+		c.JSON(http.StatusOK, response.Data{
+			Code: http.StatusOK,
+			Msg:  "数据添加成功",
+			Result: response.ProbM{Host: dehost,
+				Ports:    deports,
+				Services: deservices,
+				Fingers:  defingers,
+			},
+		})
+	} else {
+		c.JSON(http.StatusBadRequest, response.Data{
+			Code: http.StatusBadRequest,
+			Msg:  "数据添加失败",
+			Result: response.ProbM{Host: dehost,
+				Ports:    deports,
+				Services: deservices,
+				Fingers:  defingers,
+			},
+		})
+	}
+
 }
