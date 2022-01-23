@@ -4,6 +4,7 @@ import (
 	"github.com/binganao/Taio/lib"
 	"github.com/binganao/Taio/model/db"
 	"github.com/binganao/Taio/model/response"
+	"github.com/binganao/Taio/utils/crypto"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"strings"
@@ -11,7 +12,12 @@ import (
 
 func Single(c *gin.Context) {
 	host := c.Query("host")
-	c.JSON(http.StatusOK, queryHost(host))
+	dehost := crypto.Base64Decrypto(host)
+	if dehost != "" {
+		c.JSON(http.StatusOK, queryHost(dehost))
+	} else {
+		c.JSON(http.StatusBadRequest, response.Search{Code: http.StatusBadRequest})
+	}
 }
 
 func queryHost(host string) response.Search {
