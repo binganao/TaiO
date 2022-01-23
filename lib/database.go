@@ -30,7 +30,7 @@ func InitDB() *gorm.DB {
 
 	db, err := gorm.Open(driverName, args)
 	if err != nil {
-		logger.Error("Database connect failed!")
+		logger.Error("数据库连接失败，请检查 config.toml")
 		os.Exit(0)
 	}
 
