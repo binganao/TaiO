@@ -29,10 +29,10 @@ var (
 	MASSCAN_RATE        int
 
 	/**
-	ADD SECRET
+	SECRET
 	*/
-	CONFIG_ADD_SECRET = "DATA.SECRET"
-	ADD_SECRET        string
+	CONFIG_SECRET = "DATA.SECRET"
+	SECRET        string
 )
 
 func InitValue() {
@@ -46,5 +46,5 @@ func InitValue() {
 
 	MASSCAN_RATE = viper.GetInt(CONFIG_MASSCAN_RATE)
 
-	ADD_SECRET = viper.GetString(CONFIG_ADD_SECRET)
+	SECRET = viper.GetString(CONFIG_SECRET)
 }

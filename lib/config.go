@@ -25,7 +25,7 @@ func InitConfig() {
 	viper.SetDefault(common.CONFIG_MASSCAN_RATE, 100)
 
 	// add secret
-	viper.SetDefault(common.CONFIG_ADD_SECRET, "")
+	viper.SetDefault(common.CONFIG_SECRET, "")
 
 	err := viper.ReadInConfig()
 	if err != nil {
