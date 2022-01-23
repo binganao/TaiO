@@ -1,6 +1,7 @@
 package routes
 
 import (
+	"github.com/binganao/Taio/routes/api/v1/data"
 	"github.com/binganao/Taio/routes/api/v1/data/tmp"
 	"github.com/binganao/Taio/routes/api/v1/job"
 	"github.com/binganao/Taio/routes/api/v1/search"
@@ -12,7 +13,7 @@ func V1(r *gin.Engine) {
 	v1 := r.Group("api/v1")
 	{
 		v1.GET("search", search.Single)
-		v1.GET("tmpsearch", tmp2.SingleTmp)
+		v1.GET("tmp/search", tmp2.SingleTmp)
 
 		jobR := v1.Group("job")
 		{
@@ -23,7 +24,8 @@ func V1(r *gin.Engine) {
 
 		dataR := v1.Group("data")
 		{
-			dataR.POST("addtmp", tmp.AddDataTmp)
+			dataR.POST("add", data.AddData)
+			dataR.POST("tmp/add", tmp.AddDataTmp)
 		}
 	}
 }
