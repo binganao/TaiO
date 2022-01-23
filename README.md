@@ -7,6 +7,64 @@ TaiO 的定位是一款用于攻击方对靶标资产梳理，快速定位脆弱
 
 在使用本项目之前，请确保已经得到授权。同时**本项目功能还未完善**，同时仅包含后端功能
 
+### 当前进度：
+
+饼干还在努力开发
+
+#### 命令行
+
+
+
+#### 后端返回结果
+```json
+{
+  "Code": 200,
+  "Msg": "操作成功",
+  "Hosts": "打码",
+  "Ports": [
+    "111",
+    "3306",
+    "80",
+    "443",
+    "1234",
+    "22"
+  ],
+  "Services": [
+    {
+      "Port": "3306",
+      "ServiceName": "mysql"
+    },
+    {
+      "Port": "22",
+      "ServiceName": "ssh"
+    },
+    {
+      "Port": "111",
+      "ServiceName": "rpcbind"
+    },
+    {
+      "Port": "80",
+      "ServiceName": "http"
+    },
+    {
+      "Port": "443",
+      "ServiceName": "http"
+    },
+    {
+      "Port": "1234",
+      "ServiceName": "hotline"
+    }
+  ],
+  "Fingers": [
+    {
+      "Url": "https://打码:443",
+      "App": "[]",
+      "Server": "nginx"
+    }
+  ]
+}
+```
+
 ## DONE:
 
 Day1: 配置文件、Logger、数据库、端口扫描、服务扫描、指纹识别、单个 IP 探测、结果整理至数据库、通过 API 查询数据、自动探测主机、优化路由分组
