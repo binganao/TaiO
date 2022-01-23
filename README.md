@@ -1,19 +1,13 @@
 # TaiO
 TaiO 的定位是一款用于攻击方对靶标资产梳理，快速定位脆弱资产的网络空间测绘安全工具
 
-![](https://github.com/binganao/TaiO/blob/master/assets/Process.png?raw=true)
+![](https://github.com/binganao/TaiO/blob/master/assets/Snipaste_2022-01-23_18-16-48.png?raw=true)
 
 ## 注意
 
 在使用本项目之前，请确保已经得到授权。同时**本项目功能还未完善**，同时仅包含后端功能
 
 ### 当前进度：
-
-饼干还在努力开发
-
-#### 命令行
-
-![](https://github.com/binganao/TaiO/blob/master/assets/Snipaste_2022-01-23_18-16-48.png?raw=true)
 
 #### 后端返回结果
 ```json
