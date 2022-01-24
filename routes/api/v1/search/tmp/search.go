@@ -22,7 +22,7 @@ func SingleTmp(c *gin.Context) {
 
 func queryHost(host string) response.Search {
 	s := response.Search{}
-	var qd []db.AddTmp
+	var qd []db.ProbTmpM
 
 	lib.GetDB().Where("host = ?", host).Find(&qd)
 

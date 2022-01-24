@@ -35,7 +35,7 @@ func InitDB() *gorm.DB {
 	}
 
 	db.AutoMigrate(&db2.ProbM{})
-	db.AutoMigrate(&db2.AddTmp{})
+	db.AutoMigrate(&db2.ProbTmpM{})
 
 	DB = db
 	return db
