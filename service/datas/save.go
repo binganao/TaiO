@@ -1,4 +1,4 @@
-package save
+package datas
 
 import (
 	"github.com/binganao/Taio/lib"
@@ -42,10 +42,10 @@ func Save(host, ports, services, fingers string, start time.Time) {
 }
 
 func TmpSave(host, ports, services, fingers string) {
-	var probT []db.AddTmp
+	var probT []db.ProbTmpM
 	lib.GetDB().Where("host = ?", host).Find(&probT)
 	if len(probT) == 0 {
-		probt := db.AddTmp{
+		probt := db.ProbTmpM{
 			Host:     host,
 			Ports:    ports,
 			Services: services,
@@ -57,15 +57,15 @@ func TmpSave(host, ports, services, fingers string) {
 			logger.Error("目标 " + host + " 已完成探测，但写入数据失败!")
 		}
 	} else {
-		probt := db.AddTmp{
+		probt := db.ProbTmpM{
 			Host:     host,
 			Ports:    ports,
 			Services: services,
 			Fingers:  fingers,
 		}
-		lib.GetDB().Model(&db.AddTmp{}).Where("host = ?", host).Update("ports", probt.Ports)
-		lib.GetDB().Model(&db.AddTmp{}).Where("host = ?", host).Update("services", probt.Services)
-		lib.GetDB().Model(&db.AddTmp{}).Where("host = ?", host).Update("fingers", probt.Fingers)
+		lib.GetDB().Model(&db.ProbTmpM{}).Where("host = ?", host).Update("ports", probt.Ports)
+		lib.GetDB().Model(&db.ProbTmpM{}).Where("host = ?", host).Update("services", probt.Services)
+		lib.GetDB().Model(&db.ProbTmpM{}).Where("host = ?", host).Update("fingers", probt.Fingers)
 		logger.Success("目标 " + host + " 已完成探测!")
 	}
 }

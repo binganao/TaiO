@@ -3,7 +3,7 @@ package data
 import (
 	"github.com/binganao/Taio/common"
 	"github.com/binganao/Taio/model/response"
-	"github.com/binganao/Taio/service/save"
+	"github.com/binganao/Taio/service/datas"
 	"github.com/binganao/Taio/utils/crypto"
 	"github.com/gin-gonic/gin"
 	"net/http"
@@ -29,7 +29,7 @@ func AddData(c *gin.Context) {
 		dePorts := crypto.Base64Decrypto(ports)
 		deServices := crypto.Base64Decrypto(services)
 		deFingers := crypto.Base64Decrypto(fingers)
-		save.Save(deHost, dePorts, deServices, deFingers, time.Now())
+		datas.Save(deHost, dePorts, deServices, deFingers, time.Now())
 		c.JSON(http.StatusOK, response.OptR{
 			Code: http.StatusOK,
 			Msg:  "操作成功",

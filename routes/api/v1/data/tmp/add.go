@@ -2,7 +2,7 @@ package tmp
 
 import (
 	"github.com/binganao/Taio/model/response"
-	"github.com/binganao/Taio/service/save"
+	"github.com/binganao/Taio/service/datas"
 	"github.com/binganao/Taio/utils/crypto"
 	"github.com/gin-gonic/gin"
 	"net/http"
@@ -20,7 +20,7 @@ func AddDataTmp(c *gin.Context) {
 	deFingers := crypto.Base64Decrypto(fingers)
 
 	if deHost != "" && dePorts != "" {
-		save.TmpSave(deHost, dePorts, deServices, deFingers)
+		datas.TmpSave(deHost, dePorts, deServices, deFingers)
 
 		c.JSON(http.StatusOK, response.Data{
 			Code: http.StatusOK,

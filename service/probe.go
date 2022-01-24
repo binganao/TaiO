@@ -2,10 +2,10 @@ package service
 
 import (
 	"github.com/binganao/Taio/pkg/logger"
+	"github.com/binganao/Taio/service/datas"
 	"github.com/binganao/Taio/service/finger"
 	"github.com/binganao/Taio/service/mas"
 	"github.com/binganao/Taio/service/nma"
-	"github.com/binganao/Taio/service/save"
 	"time"
 )
 
@@ -71,5 +71,5 @@ func Probe(ip string) {
 		}
 	}
 
-	save.Save(ip, dP, dS, dW, start)
+	datas.Save(ip, dP, dS, dW, start)
 }
