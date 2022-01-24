@@ -18,7 +18,7 @@ func AddData(c *gin.Context) {
 	secret, _ := c.GetPostForm("secret")
 
 	deSecret := crypto.Base64Decrypto(secret)
-	if deSecret != "" && deSecret != common.SECRET {
+	if deSecret == "" || (deSecret != "" && deSecret != common.SECRET) {
 		c.JSON(http.StatusBadRequest, response.OptR{
 			Code: http.StatusBadRequest,
 			Msg:  "操作失败",
