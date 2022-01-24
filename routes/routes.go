@@ -25,6 +25,7 @@ func V1(r *gin.Engine) {
 		dataR := v1.Group("data")
 		{
 			dataR.POST("add", data.AddData)
+			dataR.POST("tmp/del", tmp.DelDataTmp)
 			dataR.POST("tmp/add", tmp.AddDataTmp)
 		}
 	}

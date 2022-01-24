@@ -2,6 +2,7 @@ package tmp
 
 import (
 	"github.com/binganao/Taio/model/response"
+	"github.com/binganao/Taio/service/datas"
 	"github.com/binganao/Taio/utils/crypto"
 	"github.com/gin-gonic/gin"
 	"net/http"
@@ -19,6 +20,11 @@ func DelDataTmp(ctx *gin.Context) {
 		})
 		return
 	} else {
-
+		datas.RemoveTmp(deHost)
+		ctx.JSON(http.StatusOK, response.OptR{
+			Code: http.StatusOK,
+			Msg:  "操作成功",
+		})
+		return
 	}
 }
