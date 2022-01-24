@@ -18,7 +18,7 @@ func InitConfig() {
 	viper.SetDefault(common.CONFIG_DATABASE_PORT, "3306")
 	viper.SetDefault(common.CONFIG_DATABASE_USERNAME, "root")
 	viper.SetDefault(common.CONFIG_DATABASE_PASSWORD, "root")
-	viper.SetDefault(common.CONFIG_DATABASE_DATABASE, "taiO")
+	viper.SetDefault(common.CONFIG_DATABASE_DATABASE, "TaiO")
 	viper.SetDefault(common.CONFIG_DATABASE_CHARSET, "utf8mb4")
 
 	// masscan
