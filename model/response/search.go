@@ -12,6 +12,8 @@ type Search struct {
 type Service struct {
 	Port        string
 	ServiceName string
+	ServiceNick string
+	MaybeDanger bool
 }
 
 type Finger struct {
