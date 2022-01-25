@@ -1,8 +1,8 @@
 package job
 
 import (
-	"github.com/binganao/Taio/model/response"
-	"github.com/binganao/Taio/service/jobs"
+	"github.com/binganao/TaiO/model/response"
+	"github.com/binganao/TaiO/service/jobs"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )

@@ -3,7 +3,7 @@ package finger
 import (
 	"bytes"
 	"fmt"
-	"github.com/binganao/Taio/pkg/logger"
+	"github.com/binganao/TaiO/pkg/logger"
 	"os/exec"
 	"runtime"
 	"strings"

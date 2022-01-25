@@ -2,9 +2,9 @@ package lib
 
 import (
 	"fmt"
-	"github.com/binganao/Taio/common"
-	db2 "github.com/binganao/Taio/model/db"
-	"github.com/binganao/Taio/pkg/logger"
+	"github.com/binganao/TaiO/common"
+	db2 "github.com/binganao/TaiO/model/db"
+	"github.com/binganao/TaiO/pkg/logger"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/jinzhu/gorm"
 	"os"

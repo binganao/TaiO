@@ -3,7 +3,7 @@ package nma
 import (
 	"context"
 	"github.com/Ullaakut/nmap/v2"
-	"github.com/binganao/Taio/pkg/logger"
+	"github.com/binganao/TaiO/pkg/logger"
 	"strconv"
 	"time"
 )

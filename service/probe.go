@@ -1,11 +1,11 @@
 package service
 
 import (
-	"github.com/binganao/Taio/pkg/logger"
-	"github.com/binganao/Taio/service/datas"
-	"github.com/binganao/Taio/service/finger"
-	"github.com/binganao/Taio/service/mas"
-	"github.com/binganao/Taio/service/nma"
+	"github.com/binganao/TaiO/pkg/logger"
+	"github.com/binganao/TaiO/service/datas"
+	"github.com/binganao/TaiO/service/finger"
+	"github.com/binganao/TaiO/service/mas"
+	"github.com/binganao/TaiO/service/nma"
 	"time"
 )
 

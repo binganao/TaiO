@@ -1,9 +1,9 @@
 package tmp
 
 import (
-	"github.com/binganao/Taio/model/response"
-	"github.com/binganao/Taio/service/datas"
-	"github.com/binganao/Taio/utils/crypto"
+	"github.com/binganao/TaiO/model/response"
+	"github.com/binganao/TaiO/service/datas"
+	"github.com/binganao/TaiO/utils/crypto"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )

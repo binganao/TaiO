@@ -2,8 +2,8 @@ package mas
 
 import (
 	"context"
-	"github.com/binganao/Taio/common"
-	"github.com/binganao/Taio/pkg/logger"
+	"github.com/binganao/TaiO/common"
+	"github.com/binganao/TaiO/pkg/logger"
 	"github.com/zan8in/masscan"
 	"time"
 )

@@ -1,9 +1,9 @@
 package datas
 
 import (
-	"github.com/binganao/Taio/lib"
-	"github.com/binganao/Taio/model/db"
-	"github.com/binganao/Taio/pkg/logger"
+	"github.com/binganao/TaiO/lib"
+	"github.com/binganao/TaiO/model/db"
+	"github.com/binganao/TaiO/pkg/logger"
 )
 
 func RemoveTmp(host string) {

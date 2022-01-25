@@ -1,11 +1,11 @@
 package main
 
 import (
-	"github.com/binganao/Taio/common"
-	"github.com/binganao/Taio/lib"
-	"github.com/binganao/Taio/routes"
-	"github.com/binganao/Taio/service"
-	"github.com/binganao/Taio/service/jobs"
+	"github.com/binganao/TaiO/common"
+	"github.com/binganao/TaiO/lib"
+	"github.com/binganao/TaiO/routes"
+	"github.com/binganao/TaiO/service"
+	"github.com/binganao/TaiO/service/jobs"
 	"github.com/gin-gonic/gin"
 	"io/ioutil"
 )

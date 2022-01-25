@@ -1,8 +1,8 @@
 package lib
 
 import (
-	"github.com/binganao/Taio/common"
-	"github.com/binganao/Taio/pkg/logger"
+	"github.com/binganao/TaiO/common"
+	"github.com/binganao/TaiO/pkg/logger"
 	"github.com/fsnotify/fsnotify"
 	"github.com/spf13/viper"
 )

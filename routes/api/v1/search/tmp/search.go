@@ -1,10 +1,10 @@
 package tmp
 
 import (
-	"github.com/binganao/Taio/lib"
-	"github.com/binganao/Taio/model/db"
-	"github.com/binganao/Taio/model/response"
-	"github.com/binganao/Taio/utils/crypto"
+	"github.com/binganao/TaiO/lib"
+	"github.com/binganao/TaiO/model/db"
+	"github.com/binganao/TaiO/model/response"
+	"github.com/binganao/TaiO/utils/crypto"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"strings"

@@ -1,9 +1,9 @@
 package service
 
 import (
-	"github.com/binganao/Taio/pkg/logger"
-	"github.com/binganao/Taio/service/jobs"
-	"github.com/binganao/Taio/utils/parse"
+	"github.com/binganao/TaiO/pkg/logger"
+	"github.com/binganao/TaiO/service/jobs"
+	"github.com/binganao/TaiO/utils/parse"
 	"strconv"
 	"time"
 )

@@ -2,7 +2,7 @@ package crypto
 
 import (
 	"encoding/base64"
-	"github.com/binganao/Taio/pkg/logger"
+	"github.com/binganao/TaiO/pkg/logger"
 )
 
 func Base64Enctypto(raw string) string {

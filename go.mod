@@ -1,4 +1,4 @@
-module github.com/binganao/Taio
+module github.com/binganao/TaiO
 
 go 1.16
 

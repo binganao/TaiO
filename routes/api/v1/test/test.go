@@ -1,8 +1,8 @@
 package test
 
 import (
-	"github.com/binganao/Taio/utils/crypto"
-	"github.com/binganao/Taio/utils/parse"
+	"github.com/binganao/TaiO/utils/crypto"
+	"github.com/binganao/TaiO/utils/parse"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )

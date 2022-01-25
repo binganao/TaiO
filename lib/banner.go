@@ -2,7 +2,7 @@ package lib
 
 import (
 	"fmt"
-	"github.com/binganao/Taio/pkg/logger"
+	"github.com/binganao/TaiO/pkg/logger"
 )
 
 func Banner() {

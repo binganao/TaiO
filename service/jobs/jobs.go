@@ -1,7 +1,7 @@
 package jobs
 
 import (
-	"github.com/binganao/Taio/pkg/logger"
+	"github.com/binganao/TaiO/pkg/logger"
 	"strconv"
 )
 

@@ -1,11 +1,11 @@
 package routes
 
 import (
-	"github.com/binganao/Taio/routes/api/v1/data"
-	"github.com/binganao/Taio/routes/api/v1/data/tmp"
-	"github.com/binganao/Taio/routes/api/v1/job"
-	"github.com/binganao/Taio/routes/api/v1/search"
-	tmp2 "github.com/binganao/Taio/routes/api/v1/search/tmp"
+	"github.com/binganao/TaiO/routes/api/v1/data"
+	"github.com/binganao/TaiO/routes/api/v1/data/tmp"
+	"github.com/binganao/TaiO/routes/api/v1/job"
+	"github.com/binganao/TaiO/routes/api/v1/search"
+	tmp2 "github.com/binganao/TaiO/routes/api/v1/search/tmp"
 	"github.com/gin-gonic/gin"
 )
 
