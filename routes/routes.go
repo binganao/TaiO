@@ -12,8 +12,11 @@ import (
 func V1(r *gin.Engine) {
 	v1 := r.Group("api/v1")
 	{
-		v1.GET("search", search.Single)
-		v1.GET("tmp/search", tmp2.SingleTmp)
+		searchR := v1.Group("search")
+		{
+			searchR.GET("single", search.Single)
+			searchR.GET("tmp/single", tmp2.SingleTmp)
+		}
 
 		jobR := v1.Group("job")
 		{
