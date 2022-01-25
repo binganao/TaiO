@@ -40,6 +40,22 @@ func queryHost(host string) response.Search {
 				sv := response.Service{}
 				sv.Port = part[0]
 				sv.ServiceName = part[1]
+				snk := map[string]string{
+					"ftp":           "FTP",
+					"mysql":         "MYSQL",
+					"ssh":           "SSH",
+					"vnc":           "VNC",
+					"ms-wbt-server": "RDP",
+					"ms-sql-s":      "MSSQL",
+					"redis":         "REDIS",
+				}
+				sv.MaybeDanger = false
+				for key, value := range snk {
+					if strings.Contains(sv.ServiceName, key) {
+						sv.ServiceNick = value
+						sv.MaybeDanger = true
+					}
+				}
 				ser = append(ser, sv)
 			}
 		}
