@@ -8,8 +8,17 @@ import (
 	"net/http"
 )
 
-func DelJob(c *gin.Context) {
-	hosts := crypto.Base64Decrypto(c.Query("hosts"))
-	jobs.DelJobs(hosts)
-	c.JSON(http.StatusOK, response.JobResp{Code: http.StatusOK, Msg: "指令已下达，任务即将删除"})
+func DelJob(ctx *gin.Context) {
+
+	hosts, _ := ctx.GetPostForm("hosts")
+
+	deHosts := crypto.Base64Decrypto(hosts)
+
+	if deHosts != "" {
+		jobs.DelJobs(hosts)
+		ctx.JSON(http.StatusOK, response.JobResp{Code: http.StatusOK, Msg: "指令已下达，任务即将删除"})
+	} else {
+		ctx.JSON(http.StatusOK, response.JobResp{Code: http.StatusOK, Msg: "操作失败，请检查请求"})
+	}
+
 }

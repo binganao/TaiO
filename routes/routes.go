@@ -17,8 +17,8 @@ func V1(r *gin.Engine) {
 
 		jobR := v1.Group("job")
 		{
-			jobR.GET("add", job.AddJob)
-			jobR.GET("del", job.DelJob)
+			jobR.POST("add", job.AddJob)
+			jobR.POST("del", job.DelJob)
 			jobR.GET("stop", job.StopJob)
 		}
 
