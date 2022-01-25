@@ -52,9 +52,9 @@ func TmpSave(host, ports, services, fingers string) {
 			Fingers:  fingers,
 		}
 		if err := lib.GetDB().Create(&probt).Error; err == nil {
-			logger.Success("目标 " + host + " 已完成探测!")
+			logger.Success("目标 " + host + " 已完成探测，已经添加至临时数据中")
 		} else {
-			logger.Error("目标 " + host + " 已完成探测，但写入数据失败!")
+			logger.Error("目标 " + host + " 已完成探测，添加至临时数据失败")
 		}
 	} else {
 		probt := db.ProbTmpM{
@@ -66,6 +66,6 @@ func TmpSave(host, ports, services, fingers string) {
 		lib.GetDB().Model(&db.ProbTmpM{}).Where("host = ?", host).Update("ports", probt.Ports)
 		lib.GetDB().Model(&db.ProbTmpM{}).Where("host = ?", host).Update("services", probt.Services)
 		lib.GetDB().Model(&db.ProbTmpM{}).Where("host = ?", host).Update("fingers", probt.Fingers)
-		logger.Success("目标 " + host + " 已完成探测!")
+		logger.Success("目标 " + host + " 已完成探测，已经存在临时数据，更新完成！")
 	}
 }
