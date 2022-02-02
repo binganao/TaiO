@@ -1,6 +1,7 @@
 package service
 
 import (
+	"github.com/binganao/TaiO/common"
 	"github.com/binganao/TaiO/pkg/logger"
 	"github.com/binganao/TaiO/service/datas"
 	"github.com/binganao/TaiO/service/finger"
@@ -70,6 +71,11 @@ func Probe(ip string) {
 			}
 		}
 	}
-
-	datas.Save(ip, dP, dS, dW, start)
+	if common.NODE_TYPE != "node" {
+		datas.Save(ip, dP, dS, dW, start)
+	} else {
+		/**
+		发送数据到主端
+		*/
+	}
 }

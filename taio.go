@@ -17,15 +17,32 @@ func main() {
 	common.InitValue()
 	lib.InitDB()
 
-	jobs.InitJobs()
-	go service.AyncProbe()
+	if common.NODE_TYPE == "node" {
+		jobs.InitJobs()
+		go service.AyncProbe()
+		for true {
 
-	gin.SetMode(gin.ReleaseMode)
-	gin.DefaultWriter = ioutil.Discard
-	r := gin.Default()
+		}
+	} else if common.NODE_TYPE == "data" {
+		gin.SetMode(gin.ReleaseMode)
+		gin.DefaultWriter = ioutil.Discard
+		r := gin.Default()
 
-	r.Use(middleware.Cors())
-	routes.V1(r)
+		r.Use(middleware.Cors())
+		routes.V1(r)
 
-	r.Run()
+		r.Run()
+	} else {
+		jobs.InitJobs()
+		go service.AyncProbe()
+
+		gin.SetMode(gin.ReleaseMode)
+		gin.DefaultWriter = ioutil.Discard
+		r := gin.Default()
+
+		r.Use(middleware.Cors())
+		routes.V1(r)
+
+		r.Run()
+	}
 }

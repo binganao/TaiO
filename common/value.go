@@ -3,6 +3,15 @@ package common
 import "github.com/spf13/viper"
 
 var (
+
+	/**
+	节点类型
+	*/
+	CONFIG_NODE_TYPE = "node.type"
+	CONFIG_DATA_ADDR = "node.addr"
+	NODE_TYPE        string
+	DATA_ADDR        string
+
 	/**
 	数据库配置文件节点
 	*/
@@ -36,6 +45,10 @@ var (
 )
 
 func InitValue() {
+
+	NODE_TYPE = viper.GetString(CONFIG_NODE_TYPE)
+	DATA_ADDR = viper.GetString(CONFIG_DATA_ADDR)
+
 	DATABASE_DRIVER = viper.GetString(CONFIG_DATABASE_DRIVER)
 	DATABASE_HOST = viper.GetString(CONFIG_DATABASE_HOST)
 	DATABASE_PORT = viper.GetString(CONFIG_DATABASE_PORT)

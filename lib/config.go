@@ -12,6 +12,10 @@ func InitConfig() {
 	viper.SetConfigType("toml")
 	viper.AddConfigPath(".")
 
+	// node
+	viper.SetDefault(common.CONFIG_NODE_TYPE, "")
+	viper.SetDefault(common.CONFIG_DATA_ADDR, "127.0.0.1")
+
 	// database
 	viper.SetDefault(common.CONFIG_DATABASE_DRIVER, "mysql")
 	viper.SetDefault(common.CONFIG_DATABASE_HOST, "localhost")
