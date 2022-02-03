@@ -7,6 +7,8 @@ import (
 	"github.com/binganao/TaiO/service/finger"
 	"github.com/binganao/TaiO/service/mas"
 	"github.com/binganao/TaiO/service/nma"
+	"github.com/binganao/TaiO/utils/crypto"
+	"github.com/binganao/TaiO/utils/request"
 	"time"
 )
 
@@ -77,5 +79,10 @@ func Probe(ip string) {
 		/**
 		发送数据到主端
 		*/
+		sip := "host=" + crypto.Base64Enctypto(ip)
+		sdp := "ports=" + crypto.Base64Enctypto(dP)
+		sds := "services=" + crypto.Base64Enctypto(dS)
+		sdw := "fingers=" + crypto.Base64Enctypto(dW)
+		request.Post(common.DATA_ADDR+"/api/v1/data/tmp/add", sip+"&"+sdp+"&"+sds+"&"+sdw)
 	}
 }

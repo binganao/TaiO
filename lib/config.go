@@ -14,7 +14,7 @@ func InitConfig() {
 
 	// node
 	viper.SetDefault(common.CONFIG_NODE_TYPE, "")
-	viper.SetDefault(common.CONFIG_DATA_ADDR, "127.0.0.1")
+	viper.SetDefault(common.CONFIG_DATA_ADDR, "http://127.0.0.1:8080")
 
 	// database
 	viper.SetDefault(common.CONFIG_DATABASE_DRIVER, "mysql")
