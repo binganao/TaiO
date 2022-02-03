@@ -21,7 +21,7 @@ func main() {
 		jobs.InitJobs()
 		go service.AyncProbe()
 		for true {
-
+			service.NodeLoop()
 		}
 	} else if common.NODE_TYPE == "data" {
 		gin.SetMode(gin.ReleaseMode)
