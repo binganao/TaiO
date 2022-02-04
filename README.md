@@ -16,42 +16,45 @@ TaiO 的定位是一款用于攻击方对靶标资产梳理，快速定位脆弱
   "Msg": "操作成功",
   "Hosts": "打码",
   "Ports": [
-    "111",
     "3306",
     "80",
-    "443",
-    "1234",
-    "22"
+    "22",
+    "443"
   ],
   "Services": [
     {
-      "Port": "3306",
-      "ServiceName": "mysql"
-    },
-    {
       "Port": "22",
-      "ServiceName": "ssh"
+      "ServiceName": "ssh",
+      "ServiceNick": "SSH",
+      "MaybeDanger": true
     },
     {
-      "Port": "111",
-      "ServiceName": "rpcbind"
+      "Port": "3306",
+      "ServiceName": "mysql",
+      "ServiceNick": "MYSQL",
+      "MaybeDanger": true
     },
     {
       "Port": "80",
-      "ServiceName": "http"
+      "ServiceName": "http",
+      "ServiceNick": "",
+      "MaybeDanger": false
     },
     {
       "Port": "443",
-      "ServiceName": "http"
-    },
-    {
-      "Port": "1234",
-      "ServiceName": "hotline"
+      "ServiceName": "http",
+      "ServiceNick": "",
+      "MaybeDanger": false
     }
   ],
   "Fingers": [
     {
-      "Url": "https://打码:443",
+      "Url": "http://打码:80",
+      "App": "[]",
+      "Server": "nginx"
+    },
+    {
+      "Url": "http://打码:443",
       "App": "[]",
       "Server": "nginx"
     }
